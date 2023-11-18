@@ -1,0 +1,29 @@
+{
+  "Categories": ["dog", "cat", "lion"],
+  "CategoryImages": {
+    "cat": [
+      "https://cdn.pixabay.com/photo/2014/11/30/14/11/cat-551554_960_720.jpg",
+      "https://cdn.pixabay.com/photo/2018/03/27/17/25/cat-3266673_960_720.jpg",
+      "https://cdn.pixabay.com/photo/2017/07/25/01/22/cat-2536662__340.jpg",
+      "https://cdn.pixabay.com/photo/2016/07/10/21/47/cat-1508613__340.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/23/14/57/cat-1853372__340.jpg",
+      "https://cdn.pixabay.com/photo/2016/11/29/01/10/kitten-1866475_960_720.jpg"
+    ],
+    "dog": [
+      "https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1600",
+      "https://images.pexels.com/photos/39317/chihuahua-dog-puppy-cute-39317.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+      "https://images.dog.ceo/breeds/buhund-norwegian/hakon2.jpg",
+      "https://images.dog.ceo/breeds/hound-blood/n02088466_3184.jpg",
+      "https://images.dog.ceo/breeds/pyrenees/n02111500_1787.jpg",
+      "https://images.dog.ceo/breeds/pomeranian/n02112018_5738.jpg"
+    ],
+    "lion": [
+      "https://cdn.pixabay.com/photo/2018/07/31/22/08/lion-3576045__340.jpg",
+      "https://cdn.pixabay.com/photo/2018/05/03/22/34/lion-3372720__340.jpg",
+      "https://cdn.pixabay.com/photo/2019/04/06/05/17/wallpaper-4106667__340.jpg",
+      "https://cdn.pixabay.com/photo/2020/12/30/14/26/lion-5873637_960_720.jpg",
+      "https://cdn.pixabay.com/photo/2020/05/25/10/59/lion-5218109_960_720.jpg",
+      "https://cdn.pixabay.com/photo/2021/09/28/16/43/lion-6665048_960_720.jpg"
+    ]
+  }
+}
