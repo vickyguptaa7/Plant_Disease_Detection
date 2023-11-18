@@ -64,8 +64,8 @@ const ContactUs = () => {
   };
 
   return (
-    <div className="mt-28 mx-auto">
-      <div className="header flex flex-col items-center justify-center">
+    <div className="mx-auto mt-28">
+      <div className="flex flex-col items-center justify-center header">
         <h1 className="text-[color:var(--color-primary)] text-4xl font-semibold mb-2 text-center">
           Contact Us
         </h1>
@@ -94,19 +94,19 @@ const ContactUs = () => {
             </p>
           </div>
           <div className="mt-12 ">
-            <ul className="flex items-start justify-center flex-col gap-6 text-sm">
+            <ul className="flex flex-col items-start justify-center gap-6 text-sm">
               <li className="flex items-center justify-center gap-2">
-                <BsFillTelephoneFill /> 011 1124567
+                <BsFillTelephoneFill /> 011 12345678
               </li>
               <li className="flex items-center justify-center gap-1">
-                <MdEmail className="text-lg" /> sih.enkrypt@gmail.com
+                <MdEmail className="text-lg" /> leafrakshak@gmail.com
               </li>
               <li className="flex items-center justify-center gap-1">
                 <ImLocation className="text-lg" /> Jamia Nagar New Delhi
               </li>
             </ul>
           </div>
-          <div className="flex items-ceter justify-between text-2xl mt-12">
+          <div className="flex justify-between mt-12 text-2xl items-ceter">
             <button
               className={twMerge(
                 "hover:scale-110  duration-500 ease-in-out",
@@ -161,9 +161,9 @@ const ContactUs = () => {
             </button>
           </div>
         </div>
-        <div className="basis-1/2 p-8">
+        <div className="p-8 basis-1/2">
           <form action="" className="mx-auto" onSubmit={onSubmitHandler}>
-            <div className="body flex flex-col gap-8">
+            <div className="flex flex-col gap-8 body">
               <Input
                 data={username}
                 setData={setUsername}
@@ -190,12 +190,12 @@ const ContactUs = () => {
               />
             </div>
 
-            <div className="footer mt-8 flex justify-around">
+            <div className="flex justify-around mt-8 footer">
               {isLoading && <LoadingSpinner />}
               {!isLoading && (
                 <Button
                   type="submit"
-                  className="btn-base px-4 py-2"
+                  className="px-4 py-2 btn-base"
                   disabled={!isFormValid || isLoading}
                 >
                   Submit

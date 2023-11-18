@@ -1,70 +1,31 @@
 import React from "react";
-import Ijlal from "../assets/members/ijlal.jpg";
-import Ankur from "../assets/members/Ankur.jpeg";
-import Vicky from "../assets/members/Vicky.jpg";
-import Kovid from "../assets/members/Kovid.jpeg";
-import Priyanshu from "../assets/members/Priyanshu.jpeg";
-import Shairin from "../assets/members/Shairin.jpg";
 
-import { FiTarget } from "react-icons/fi";
+import ravi from "../assets/members/ravi.jpeg";
+import Vicky from "../assets/members/vicky.jpeg";
+
+import { BsFacebook, BsGithub, BsLinkedin } from "react-icons/bs";
 import { FaServicestack } from "react-icons/fa";
+import { FiTarget } from "react-icons/fi";
 import { RiMessage3Fill } from "react-icons/ri";
-import { BsFacebook, BsLinkedin, BsGithub } from "react-icons/bs";
-import { twMerge } from "tailwind-merge";
 import { useSelector } from "react-redux";
+import { twMerge } from "tailwind-merge";
 
 const members = [
   {
-    id: 0,
-    name: "Shairin Meraj",
-    education: "B.Tech ECE",
-    url: Shairin,
-    linkedInUrl: "https://www.linkedin.com/in/shairin-meraj-451524202",
-    githubUrl: "https://github.com/ShairinMeraj",
-    facebookUrl: "https://www.facebook.com/",
-  },
-  {
     id: 1,
-    name: "Ankur Mishra",
+    name: "Vicky Gupta",
     education: "B.Tech CSE",
-    url: Ankur,
-    linkedInUrl: "https://www.linkedin.com/in/ankur-mishra-374304235/",
-    githubUrl: "https://github.com/qmigo",
+    url: Vicky,
+    linkedInUrl: "https://www.linkedin.com/in/vickyguptaa7/",
+    githubUrl: "https://github.com/vickyguptaa7",
     facebookUrl: "https://www.facebook.com/",
   },
   {
     id: 2,
-    name: "Priyanshu",
-    education: "B.Tech ECE",
-    url: Priyanshu,
-    linkedInUrl: "https://www.linkedin.com/in/priyanshu-pathak-34843220b/",
-    githubUrl: "https://github.com/Pr1y4nshu",
-    facebookUrl: "https://www.facebook.com/",
-  },
-  {
-    id: 3,
-    name: "Kovid Sharma",
+    name: "Ravi Gowri Jaswanth",
     education: "B.Tech CSE",
-    url: Kovid,
-    linkedInUrl: "https://www.linkedin.com/in/kovid-sharma-469580201",
-    githubUrl: "https://github.com/kovid-sharma",
-    facebookUrl: "https://www.facebook.com/",
-  },
-  {
-    id: 4,
-    name: "Ijlal Ahmed",
-    education: "B.Tech CSE",
-    url: Ijlal,
-    linkedInUrl: "https://www.linkedin.com/in/ijlal-ahmad-14aa35202/",
-    githubUrl: "https://github.com/Thre4dripper",
-    facebookUrl: "https://www.facebook.com/",
-  },
-  {
-    id: 5,
-    name: "Vicky Gupta",
-    education: "B.Tech CSE",
-    url: Vicky,
-    linkedInUrl: "https://www.linkedin.com/in/vicky-gupta-61a418175/",
+    url: ravi,
+    linkedInUrl: "https://www.linkedin.com/in/ravi-gowri-jaswanth-578a66202/",
     githubUrl: "https://github.com/Vicky-Guptaa",
     facebookUrl: "https://www.facebook.com/",
   },
@@ -85,7 +46,7 @@ const AboutUs = () => {
             alt=""
           />
         </div>
-        <div className="text-center p-4">
+        <div className="p-4 text-center">
           <h3 className="text-left text-[color:var(--tertiary-text-color)] font-bold tracking-wider">
             {member.name.toUpperCase()}
           </h3>
@@ -108,8 +69,8 @@ const AboutUs = () => {
     );
   });
   return (
-    <div className="mt-28 mx-auto">
-      <div className="header flex flex-col items-center justify-center">
+    <div className="mx-auto mt-28">
+      <div className="flex flex-col items-center justify-center header">
         <h1 className="text-[color:var(--color-primary)] text-4xl font-semibold mb-2 text-center">
           About Us
         </h1>
@@ -121,79 +82,79 @@ const AboutUs = () => {
           isDarkMode ? "text-gray-300" : "text-gray-400"
         )}
       >
-        Team ENKRYPT is an organisation with the belief in making better out of
-        today. We are here to analyse the existing problems of the conventional
-        and graphical passwords. To Build something beautiful with a unique
-        design, creative modelling and our top most priorty data safety.
+        LeafRakshak is an innovative plant leaf disease detection project aimed
+        at safeguarding the health and vitality of plant life. Leveraging
+        advanced technology and artificial intelligence, LeafRakshak is designed
+        to identify and diagnose diseases affecting plant leaves, providing
+        timely insights for effective intervention and care.
       </p>
 
-      <div className="mt-12 flex items-center justify-evenly flex-wrap">
-        <div className="rounded-xl overflow-hidden w-80 mx-4 mb-8 shadow-[0px_0px_10px_rgba(0,0,0,0.4)] hover:scale-110 duration-700 ease-in-out">
+      <div className="flex flex-wrap items-center mt-12 justify-evenly">
+        <div className="rounded-xl overflow-hidden w-80 mx-4 mb-8 shadow-[0px_0px_10px_rgba(0,0,0,0.4)] hover:scale-105 duration-700 ease-in-out">
           <div className="bg-[color:var(--color-primary)] px-4 py-3 text-white text-lg flex items-center gap-2">
             <FiTarget className="text-2xl" />
-            <h3 className="">Mission</h3>
+            <h3 className="font-bold">Mission</h3>
           </div>
           <div className="bg-[color:var(--main-color)] p-4">
             <p
               className={twMerge(
-                "tracking-wider text-[color:var(--tertiary-text-color)] text-sm ",
+                "tracking-wider text-[color:var(--tertiary-text-color)] text-justify text-sm ",
                 isDarkMode ? "text-gray-300" : "text-gray-400"
               )}
             >
-              To provide a simple, feasible and flexible graphical
-              authentication infrastructure. Overcome the challenges faced by
-              the existing techniques by building on the fundamental process and
-              designing a unique way to ENKRYPT your choices.
+              LeafRakshak strives to transform plant care through AI-powered
+              disease detection. Our goal is to empower individuals, gardeners,
+              and farmers with the tools and knowledge to preserve plant health,
+              fostering a greener and more sustainable world.
             </p>
           </div>
         </div>
-        <div className="rounded-xl overflow-hidden w-80 mx-4 mb-8 shadow-[0px_0px_10px_rgba(0,0,0,0.4)] hover:scale-110 duration-700 ease-in-out">
+        <div className="rounded-xl overflow-hidden w-80 mx-4 mb-8 shadow-[0px_0px_10px_rgba(0,0,0,0.4)] hover:scale-105 duration-700 ease-in-out">
           <div className="bg-[color:var(--color-primary)] px-4 py-3 text-white text-lg flex items-center gap-2">
             <FaServicestack className="text-2xl" />
-            <h3 className="">Service</h3>
+            <h3 className="font-bold">Service</h3>
           </div>
           <div className="bg-[color:var(--main-color)] p-4">
             <p
               className={twMerge(
-                "tracking-wider text-[color:var(--tertiary-text-color)] text-sm ",
+                "tracking-wider text-[color:var(--tertiary-text-color)] text-justify text-sm ",
                 isDarkMode ? "text-gray-300" : "text-gray-400"
               )}
             >
-              We here at ENKRYPT facilitates our user with User friendly
-              experience which makes them forget their conventional passwords
-              much easily. Our service includes high security, unique
-              functionalty and high end user experience with keeping the safety
-              always the top priorty.
+              LeafRakshak revolutionizes plant care through AI-driven disease
+              detection, personalized treatment advice, real-time monitoring,
+              educational resources, and a supportive community. Cultivate
+              healthier plants effortlessly with our comprehensive services.
             </p>
           </div>
         </div>
-        <div className="rounded-xl overflow-hidden w-80 mx-4 mb-8 shadow-[0px_0px_10px_rgba(0,0,0,0.4)] hover:scale-110 duration-700 ease-in-out">
+        <div className="rounded-xl overflow-hidden w-80 mx-4 mb-8 shadow-[0px_0px_10px_rgba(0,0,0,0.4)] hover:scale-105 duration-700 ease-in-out">
           <div className="bg-[color:var(--color-primary)] px-4 py-3 text-white text-lg flex items-center gap-2">
             <RiMessage3Fill className="text-2xl" />
-            <h3 className="">Message</h3>
+            <h3 className="font-bold">Message</h3>
           </div>
           <div className="bg-[color:var(--main-color)] p-4">
             <p
               className={twMerge(
-                "tracking-wider  text-[color:var(--tertiary-text-color)] text-sm ",
+                "tracking-wider  text-[color:var(--tertiary-text-color)] text-sm text-justify ",
                 isDarkMode ? "text-gray-300" : "text-gray-400"
               )}
             >
-              We at ENKRYPT knows the importance of privacy and it is the need
-              of the hour in this high tech world. We hereby designed a process
-              which can compete with all of these challenges so our users can
-              relax while their choices are in safest hands.
+              Our mission is to make disease detection easy and empowering. We provide
+              accurate diagnoses, personalized recommendations, and a supportive
+              community. Join us in cultivating healthier, greener spaces for a
+              sustainable world."
             </p>
           </div>
         </div>
       </div>
-      <div className="mt-6 header flex flex-col items-center justify-center">
+      <div className="flex flex-col items-center justify-center mt-6 header">
         <h1 className=" text-[color:var(--color-primary)] text-4xl font-semibold mb-2 text-center">
           Our Team
         </h1>
         <div className="h-[0.30rem] w-12 bg-[color:var(--color-primary)] rounded-full"></div>
       </div>
-      <div className="flex justify-evenly items-center flex-wrap mt-12">
+      <div className="flex flex-wrap items-center mt-12 justify-evenly">
         {allMembers}
       </div>
     </div>

@@ -14,7 +14,7 @@ function App() {
   const isDarkMode = useSelector((state) => state.ui.isDarkMode);
 
   return (
-    <div className="App">
+    <div className="App hide-scrollbar">
       <Layout>
         <Routes>
           <Route path="/" element={<Home />} />

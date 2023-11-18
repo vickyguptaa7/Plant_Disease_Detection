@@ -32,7 +32,7 @@ const Navbar = () => {
               <Link to="/">
                 <img src={logo} className="h-12 scale-110 " alt="" />
               </Link>
-              <span className="text-black">LEAF</span>{" "}
+              <span className="text-[color:var(--tertiary-text-color)] ">LEAF</span>{" "}
               <span className="text-[color:var(--color-primary)]">RAKSHAK</span>
             </h1>
           </div>

@@ -4,10 +4,10 @@
 
 :root {
   --color-primary: #38E54D;
-  --primary-text-color: #05cbf7;
+  --primary-text-color: #38E54D;
   --secondary-text-color: #6a7280;
   --tertiary-text-color: #141f1d;
-  --background-color: #e3e6ea;
+  --background-color: #f2f2f2;
   --main-color: #fff;
   --shadow-color: #d1d5db;
 }
@@ -27,13 +27,13 @@ body {
 }
 
 button:disabled {
-  background: #34d3fcd1;
-  border-color: #34d3fcd1;
+  background: #33ce45;
+  border-color: #38E54D;
   cursor: not-allowed;
 }
 
 button:disabled:hover {
-  background: #34d3fcd1;
+  background: #33ce45;
   color: white;
 }
 
