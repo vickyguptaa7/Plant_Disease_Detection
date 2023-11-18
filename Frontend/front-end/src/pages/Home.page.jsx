@@ -8,9 +8,12 @@ const Home = () => {
   return (
     <div className="mx-auto mt-28">
       <div className="flex flex-col items-center justify-center header">
-        <h1 className="text-[color:var(--color-primary)] text-4xl font-semibold mb-2 text-center">
-          Enkrypt
-        </h1>
+        <div className="flex gap-3">
+          <h1 className="mb-2 text-4xl font-semibold text-center ">Leaf</h1>
+          <h1 className="text-[color:var(--color-primary)] text-4xl font-semibold mb-2 text-center">
+            Rakshak
+          </h1>
+        </div>
         <div className="h-[0.30rem] w-12 bg-[color:var(--color-primary)] rounded-full"></div>
         <p
           className={twMerge(

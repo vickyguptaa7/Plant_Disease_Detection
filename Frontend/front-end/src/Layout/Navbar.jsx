@@ -28,12 +28,12 @@ const Navbar = () => {
       >
         <div className="w-11/12 md:w-[85%]  lg:w-4/5 mx-auto max-w-[1440px] flex justify-between items-center">
           <div className="logo">
-            <h1 className="text-2xl font-bold">
+            <h1 className="flex items-center gap-3 text-2xl font-semibold">
               <Link to="/">
-                <img src={logo} className="h-12 scale-110" alt="" />
+                <img src={logo} className="h-12 scale-110 " alt="" />
               </Link>
-              {/* <span className="text-black">The</span>{" "}
-              <span className="text-[color:var(--color-primary)]">Enkrypt</span> */}
+              <span className="text-black">LEAF</span>{" "}
+              <span className="text-[color:var(--color-primary)]">RAKSHAK</span>
             </h1>
           </div>
 
