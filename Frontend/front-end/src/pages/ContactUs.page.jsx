@@ -10,28 +10,19 @@ import {
 } from "react-icons/bs";
 import { ImLocation } from "react-icons/im";
 import { MdEmail } from "react-icons/md";
-import { useDispatch, useSelector } from "react-redux";
-import {
-  setContactUsInitialState,
-  setEmail,
-  setIsFormValid,
-  setMessage,
-  setUsername,
-} from "../store/reducers/contactUs.Reducer";
+import { useSelector } from "react-redux";
 import TextArea from "../components/Inputs/TextArea.component";
 import Button from "../components/Button/Button.component";
-import { contactUsFormSubmit } from "../store/actions/contactUs.actions";
 import LoadingSpinner from "../components/UI/LoadingSpinner.component";
 import { twMerge } from "tailwind-merge";
 
 const ContactUs = () => {
   const isDarkMode = useSelector((state) => state.ui.isDarkMode);
-  const username = useSelector((state) => state.contactUs.username);
-  const email = useSelector((state) => state.contactUs.email);
-  const message = useSelector((state) => state.contactUs.message);
-  const isFormValid = useSelector((state) => state.contactUs.isFormValid);
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [message, setMessage] = useState("");
+  const [isFormValid, setIsFormValid] = useState(false);
   const isLoading = useSelector((state) => state.ui.isLoading);
-  const dispatch = useDispatch();
   const [isInputValid, setIsInputValid] = useState({
     username: false,
     email: false,
@@ -39,18 +30,12 @@ const ContactUs = () => {
   });
 
   useEffect(() => {
-    return () => {
-      dispatch(setContactUsInitialState());
-    };
-  }, [dispatch]);
-
-  useEffect(() => {
     if (isInputValid.username && isInputValid.email && isInputValid.message) {
-      dispatch(setIsFormValid(true));
+      setIsFormValid(true)
     } else {
-      dispatch(setIsFormValid(false));
+      setIsFormValid(false)
     }
-  }, [isInputValid, dispatch]);
+  }, [isInputValid]);
 
   const onSubmitHandler = (event) => {
     event.preventDefault();
@@ -60,7 +45,6 @@ const ContactUs = () => {
       message,
     };
     console.log(userInfo);
-    dispatch(contactUsFormSubmit(userInfo));
   };
 
   return (
@@ -198,7 +182,7 @@ const ContactUs = () => {
                   className="px-4 py-2 btn-base"
                   disabled={!isFormValid || isLoading}
                 >
-                  Submit
+                  SUBMIT
                 </Button>
               )}
             </div>

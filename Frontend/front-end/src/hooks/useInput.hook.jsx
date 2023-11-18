@@ -1,9 +1,6 @@
 import { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
 
-const useInput = (validateValue, name, data, setData) => {
-  const dispatch = useDispatch();
-
+const useInput = (validateValue, name, data, setData, type) => {
   const [enteredValue, setEnteredValue] = useState(data);
   const [isTouched, setIsTouched] = useState(false);
 
@@ -11,11 +8,13 @@ const useInput = (validateValue, name, data, setData) => {
   const hasError = !valueIsValid && isTouched;
 
   useEffect(() => {
-    dispatch(setData(enteredValue));
-  }, [enteredValue, dispatch,setData]);
+    setData(enteredValue);
+  }, [enteredValue, setData]);
 
   const valueChangeHandler = (event) => {
-    setEnteredValue(event.target.value);
+    if (type == "file") {
+      setEnteredValue(event.target.files[0]);
+    } else setEnteredValue(event.target.value);
   };
 
   const inputBlurHandler = (event) => {

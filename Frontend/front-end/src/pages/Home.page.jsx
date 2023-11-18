@@ -1,6 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { twMerge } from "tailwind-merge";
+import DiseaseDetector from "../components/DiseaseDetector/DiseaseDetector";
 // import SihLogo from "../assets/Images/SihLogo.png";
 
 const Home = () => {
@@ -26,14 +27,7 @@ const Home = () => {
           Plant Leaf Disease Detection
         </p>
       </div>
-      <div
-        className={twMerge(
-          "mt-2",
-          isDarkMode ? "text-gray-300" : "text-gray-500"
-        )}
-      >
-    
-      </div>
+      <DiseaseDetector />
     </div>
   );
 };

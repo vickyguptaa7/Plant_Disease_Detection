@@ -2,17 +2,21 @@ import React, { useEffect } from "react";
 import { twMerge } from "tailwind-merge";
 import useInput from "../../hooks/useInput.hook";
 
-import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
+import { BiPhone } from "react-icons/bi";
 import { BsKeyboard } from "react-icons/bs";
+import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
+import { IoImageOutline } from "react-icons/io5";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
-import { BiPhone } from "react-icons/bi";
 
 const inputValidationFunctions = (inputName) => {
   if (inputName.toLowerCase() === "email") {
     return (value) => value.includes("@");
   }
-  return (value) => value.trim() !== "";
+  return (value) => {
+    if (typeof value === "string") return value.trim() !== "";
+    return value !== "";
+  };
 };
 
 const Input = ({
@@ -22,6 +26,7 @@ const Input = ({
   isInputValid,
   data,
   setData,
+  ...props
 }) => {
   const {
     value: enteredValue,
@@ -33,7 +38,8 @@ const Input = ({
     inputValidationFunctions(inputFieldName),
     inputFieldName.toLowerCase(),
     data,
-    setData
+    setData,
+    type
   );
   const isDarkMode = useSelector((state) => state.ui.isDarkMode);
   useEffect(() => {
@@ -70,6 +76,11 @@ const Input = ({
       <BiPhone className="text-[color:var(--color-primary)]  mx-1 text-xl" />
     );
     message = "Phone number must not be empty.";
+  } else if (inputFieldName.toLowerCase().includes("file")) {
+    icon = (
+      <IoImageOutline className="text-[color:var(--color-primary)]  mx-1 text-xl" />
+    );
+    message = "Phone number must not be empty.";
   }
 
   const invalidContainer = " border-[0.12rem] border-red-400 ";
@@ -85,18 +96,35 @@ const Input = ({
         )}
       >
         {icon}
-        <input
-          name={inputFieldName}
-          className={twMerge(
-            `  ml-1 outline-none text-[color:var(--secondary-text-color)] text-sm w-full `,
-            isDarkMode ? "bg-transparent text-white" : "bg-gray-100"
-          )}
-          type={type}
-          placeholder={inputFieldName}
-          onChange={valueChangeHandler}
-          onBlur={valueBlurHandler}
-          value={enteredValue}
-        />
+        {type === "file" ? (
+          <input
+            name={inputFieldName}
+            className={twMerge(
+              `  ml-1 outline-none text-[color:var(--secondary-text-color)] text-sm w-full `,
+              isDarkMode ? "bg-transparent text-white" : "bg-gray-100"
+            )}
+            type={type}
+            placeholder={inputFieldName}
+            onChange={valueChangeHandler}
+            onBlur={valueBlurHandler}
+            // value={type === "file" ? enteredValue : ""}
+            {...props}
+          />
+        ) : (
+          <input
+            name={inputFieldName}
+            className={twMerge(
+              `  ml-1 outline-none text-[color:var(--secondary-text-color)] text-sm w-full `,
+              isDarkMode ? "bg-transparent text-white" : "bg-gray-100"
+            )}
+            type={type}
+            placeholder={inputFieldName}
+            onChange={valueChangeHandler}
+            onBlur={valueBlurHandler}
+            value={enteredValue}
+            {...props}
+          />
+        )}
       </div>
       {valueInputHasError && (
         <p className="text-red-400 text-xs text-left absolute mt-[0.1rem]">
