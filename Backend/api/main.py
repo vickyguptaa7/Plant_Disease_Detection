@@ -39,7 +39,7 @@ async def ping():
 
 @app.post("/predict")
 async def predict(file: UploadFile = File(...), image_type: str = None):
-    image = read_file_as_image(await file.read())
+    image = read_file_as_image(await file.read(),image_type=='GRAYSCALE')
     image_batch = np.expand_dims(image, axis=0)
     
     # prediction using the model loaded
