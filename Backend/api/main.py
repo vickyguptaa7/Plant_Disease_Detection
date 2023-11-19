@@ -1,5 +1,4 @@
 from fastapi import FastAPI, File, UploadFile
-from fastapi.middleware.cors import CORSMiddleware
 import uvicorn
 import numpy as np
 import tensorflow as tf
@@ -7,19 +6,6 @@ from Class_Names import CLASS_NAMES
 from Helper import read_file_as_image
 
 app = FastAPI()
-
-orgins = [
-    "http://localhost:3000",
-    "http://localhost",
-]
-
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=orgins,
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
 MODEL = {
     'COLOURED': tf.keras.models.load_model(
