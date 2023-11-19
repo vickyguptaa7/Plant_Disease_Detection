@@ -16,4 +16,5 @@ def read_file_as_image(data) -> np.ndarray:
     image = image.convert('RGB')
     # Convert to numpy array
     image = np.array(image)
+    print(image.shape)
     return image

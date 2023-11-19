@@ -11,7 +11,7 @@ import LoadingSpinner from "../UI/LoadingSpinner.component";
 const DiseaseDetector = ({}) => {
   const isDarkMode = useSelector((state) => state.ui.isDarkMode);
   const isLoading = useSelector((state) => state.ui.isLoading);
-  const [imageType, setImageType] = useState("coloured");
+  const [imageType, setImageType] = useState("COLOURED");
   const [isFormValid, setIsFormValid] = useState(false);
   const [file, setFile] = useState("");
   const [detectData, setDetectData] = useState(null);
@@ -118,9 +118,9 @@ const DiseaseDetector = ({}) => {
                 )}
                 onChange={(e) => setImageType(e.target.value)}
               >
-                <option value="colored">Coloured</option>
-                <option value="grayscale">Grayscale</option>
-                <option value="segmented">Segmented</option>
+                <option value="COLOURED">Coloured</option>
+                <option value="GRAYSCALE">Grayscale</option>
+                <option value="SEGMENTED">Segmented</option>
               </select>
             </div>
             <div className="flex justify-around mt-8 footer">
@@ -177,16 +177,27 @@ const DiseaseDetector = ({}) => {
                 Confidence - &nbsp;
               </h3>{" "}
               <h3 className="text-[color:var(--color-primary)] text-xl font-semibold  text-center ">
-                {detectData?.confidence.toFixed(3) * 100}%
+                {Math.round((detectData?.confidence + Number.EPSILON) * 10000) /
+                  100}
+                %
               </h3>
             </div>
-            <Button
-              type="submit"
-              className="px-4 py-2 mt-5 btn-base"
-              onClick={resetForm}
-            >
-              CLEAR
-            </Button>
+            <div className="flex gap-4">
+              <Button
+                type="submit"
+                className="px-4 py-2 mt-5 btn-inverted"
+                onClick={() => setDetectData(null)}
+              >
+                BACK
+              </Button>
+              <Button
+                type="submit"
+                className="px-4 py-2 mt-5 btn-base"
+                onClick={resetForm}
+              >
+                CLEAR
+              </Button>
+            </div>
           </div>
         )}
       </div>
