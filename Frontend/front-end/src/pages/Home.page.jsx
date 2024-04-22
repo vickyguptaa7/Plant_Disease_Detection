@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { twMerge } from "tailwind-merge";
-import DiseaseDetector from "../components/DiseaseDetector/DiseaseDetector";
+import DiseaseDetector from "../components/DeepFakeDetector/DeepFakeDetector";
 // import SihLogo from "../assets/Images/SihLogo.png";
 
 const Home = () => {
@@ -13,8 +13,7 @@ const Home = () => {
           <h1 className="mb-2 text-4xl font-semibold text-center text-[color:var(--tertiary-text-color)]  ">
           </h1>
           <h1 className="text-[color:var(--color-primary)] text-4xl font-semibold mb-2 text-center">
-            LEAF
-            RAKSHAK
+            SOCIAL RAKSHAK
           </h1>
         </div>
         <div className="h-[0.30rem] w-12 bg-[color:var(--color-primary)] rounded-full"></div>
@@ -24,7 +23,7 @@ const Home = () => {
             isDarkMode ? "text-gray-300" : "text-gray-400"
           )}
         >
-          Plant Leaf Disease Detection
+          Deepfake Detection
         </p>
       </div>
       <DiseaseDetector />
