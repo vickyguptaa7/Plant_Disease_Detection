@@ -15,6 +15,7 @@ class Model(nn.Module):
         super(Model, self).__init__()
         model = models.resnext50_32x4d(pretrained=True)
         self.model = nn.Sequential(*list(model.children())[:-2])
+        self.swish = nn.SiLU()  # Swish activation function
         self.lstm = nn.LSTM(latent_dim, hidden_dim, lstm_layers,
                             bidirectional=bidirectional)  # Set bidirectional=True
         self.dropout = nn.Dropout(0.4)
@@ -27,7 +28,8 @@ class Model(nn.Module):
         batch_size, seq_length, c, h, w = x.shape
         x = x.view(batch_size * seq_length, c, h, w)
         fmap = self.model(x)
-        x = self.avgpool(fmap)
+        x = self.swish(fmap)
+        x = self.avgpool(x)
         # Adjust view to accommodate bidirectional LSTM output
         x = x.view(batch_size, seq_length, -1)
         x_lstm, _ = self.lstm(x)
@@ -37,7 +39,7 @@ class Model(nn.Module):
 # Load the model
 MODEL = Model(2)
 MODEL.load_state_dict(torch.load(
-    'Models/Resnext_BiLstm/checkpoint.pt', map_location=torch.device('cpu')))
+    'Models/Resnext_BiLstm/checkpoint3celebdf.pt', map_location=torch.device('cpu')))
 MODEL.eval()  # Set the model to evaluation mode
 
 im_size = 112
@@ -77,9 +79,11 @@ def read_file_and_pre_processing(data):
     full_frames = []
     face_coordinates = []
     frame_count = 0
-
+    iteration = 0
     while success and frame_count < 150:
-
+        iteration += 1
+        if iteration % 3 != 0:
+            continue
         # Resize frame of video to 1/RESIZE_FACTOR size for faster face recognition processing
         small_frame = cv2.resize(
             frame, (0, 0), fx=1/RESIZE_FACTOR, fy=1/RESIZE_FACTOR)
@@ -120,7 +124,7 @@ def read_file_and_pre_processing(data):
     video.release()
 
     # Return the frames list containing the extracted faces
-    return face_frames, full_frames
+    return face_frames, full_frames, face_coordinates
 
 
 def frames_to_base64(frames):
@@ -135,8 +139,6 @@ def frames_to_base64(frames):
 
 
 def isDeepFake(frames):
-    print(torch.cuda.is_available())
-
     frames = [train_transforms(frame) for frame in frames]
     frames = torch.stack(frames)
     img = frames.unsqueeze(0)
@@ -150,3 +152,20 @@ def isDeepFake(frames):
         confidence = softmax_output[:, int(prediction.item())].item() * 100
 
         return int(prediction.item()), confidence
+
+
+def labelFullFrames(isNotFake, confidence, full_frames,face_coordinates):
+    for i in range(len(full_frames)):
+        top, right, bottom, left = face_coordinates[i]
+        top= top*RESIZE_FACTOR
+        right = right*RESIZE_FACTOR
+        bottom = bottom*RESIZE_FACTOR
+        left = left*RESIZE_FACTOR
+        if isNotFake == 0:
+            cv2.rectangle(full_frames[i], (left, top), (right, bottom), (0, 0, 255), 2)
+            cv2.putText(full_frames[i], f"DeepFake { round(confidence,2)}%", (left, top-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 0, 255), 2)
+        else:
+            cv2.rectangle(full_frames[i], (left, top), (right, bottom), (0, 255, 0), 2)
+            cv2.putText(full_frames[i], f"Real {round(confidence,2)}%", (left, top-10), cv2.FONT_HERSHEY_SIMPLEX, 0.9, (0, 255, 0), 2)
+
+    return full_frames

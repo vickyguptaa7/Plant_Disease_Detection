@@ -83,7 +83,7 @@ const ContactUs = () => {
                 <BsFillTelephoneFill /> 011 12345678
               </li>
               <li className="flex items-center justify-center gap-1">
-                <MdEmail className="text-lg" /> leafrakshak@gmail.com
+                <MdEmail className="text-lg" /> socialrakshak@gmail.com
               </li>
               <li className="flex items-center justify-center gap-1">
                 <ImLocation className="text-lg" /> Jamia Nagar New Delhi
