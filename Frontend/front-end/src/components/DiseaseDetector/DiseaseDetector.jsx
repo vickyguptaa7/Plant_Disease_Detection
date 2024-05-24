@@ -163,7 +163,7 @@ const DiseaseDetector = ({}) => {
                 Label - &nbsp;
               </h3>{" "}
               <h3 className="text-[color:var(--color-primary)] text-xl font-semibold  text-center ">
-                {detectData?.label}
+                {detectData?.label.length > 20? detectData?.label.slice(0,20)+"...":detectData?.label}
               </h3>
             </div>
             <div
@@ -174,7 +174,7 @@ const DiseaseDetector = ({}) => {
               )}
             >
               <h3 className="text-[color:var(--tertiary-text-color)] text-lg font-semibold  text-center ">
-                Confidence - &nbsp;
+                Accuracy - &nbsp;
               </h3>{" "}
               <h3 className="text-[color:var(--color-primary)] text-xl font-semibold  text-center ">
                 {Math.round((detectData?.confidence + Number.EPSILON) * 10000) /
