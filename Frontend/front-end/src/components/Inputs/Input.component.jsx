@@ -8,6 +8,7 @@ import { FaRegEnvelope, FaRegUser } from "react-icons/fa";
 import { IoImageOutline } from "react-icons/io5";
 import { RiLockPasswordLine } from "react-icons/ri";
 import { useSelector } from "react-redux";
+import { MdVideoLibrary } from "react-icons/md";
 
 const inputValidationFunctions = (inputName) => {
   if (inputName.toLowerCase() === "email") {
@@ -78,7 +79,7 @@ const Input = ({
     message = "Phone number must not be empty.";
   } else if (inputFieldName.toLowerCase().includes("file")) {
     icon = (
-      <IoImageOutline className="text-[color:var(--color-primary)]  mx-1 text-xl" />
+      <MdVideoLibrary className="text-[color:var(--color-primary)]  mx-1 text-xl" />
     );
     message = "Phone number must not be empty.";
   }

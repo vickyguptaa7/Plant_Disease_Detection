@@ -1,21 +1,9 @@
 from fastapi import FastAPI, File, UploadFile
 import uvicorn
-import numpy as np
-import tensorflow as tf
 from Class_Names import CLASS_NAMES
-from Helper import read_file_as_image
+from Helper import read_file_and_pre_processing, frames_to_base64, isDeepFake, labelFullFrames
 
 app = FastAPI()
-
-MODEL = {
-    'COLOURED': tf.keras.models.load_model(
-        'Models/Resnet_Colored_80_20/resnet50-ResNet Plant Disease Detection colour -99.85.h5'),
-    'GRAYSCALE': tf.keras.models.load_model(
-        'Models/Resnet_Grayscale_80_20/i-ResNet Plant Disease Detection grayscale-99.01.h5'),
-    'SEGMENTED': tf.keras.models.load_model(
-        'Models/Resnet_Segmented_80_20/resnet50-ResNet Plant Disease Detection segmented -99.48.h5'
-    )
-}
 
 
 @app.get("/ping")
@@ -24,27 +12,32 @@ async def ping():
 
 
 @app.post("/predict")
-async def predict(file: UploadFile = File(...), image_type: str = None):
-    image = read_file_as_image(await file.read(),image_type=='GRAYSCALE')
-    image_batch = np.expand_dims(image, axis=0)
-    
-    # prediction using the model loaded
-    prediction = None
-    if image_type == 'GRAYSCALE':
-        prediction = MODEL['GRAYSCALE'].predict(image_batch)
-    elif image_type == 'SEGMENTED':
-        prediction = MODEL['SEGMENTED'].predict(image_batch)
-    else:
-        prediction = MODEL['COLOURED'].predict(image_batch)
+async def predict(file: UploadFile = File(...)):
+    print("File received")
+    try:
+        face_frames, full_frames, face_coordinates = read_file_and_pre_processing(await file.read())
+        isNotFake, confindence = isDeepFake(face_frames)
 
-    class_index = np.argmax(prediction[0])
-    predicted_class = CLASS_NAMES[class_index]
-    confidence = prediction[0][class_index]
+        full_frames = labelFullFrames(
+            isNotFake, confindence, full_frames, face_coordinates)
 
-    return {
-        'class': predicted_class,
-        'confidence': float(confidence)
-    }
+        # Encode the face images as base64 strings
+        face_images = frames_to_base64(face_frames)
+        full_images = frames_to_base64(full_frames)
+
+        return {
+            'face_images': face_images,
+            'full_images': full_images,
+            'class': isNotFake,
+            'confidence': confindence,
+        }
+
+    except ValueError as e:
+        print("Caught an error:", e)
+        return {
+            'error': str(e)
+        }
+
 
 if __name__ == "__main__":
     uvicorn.run(app, port="8000", host="localhost")

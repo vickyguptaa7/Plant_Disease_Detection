@@ -82,11 +82,11 @@ const AboutUs = () => {
           isDarkMode ? "text-gray-300" : "text-gray-400"
         )}
       >
-        LeafRakshak is an innovative plant leaf disease detection project aimed
-        at safeguarding the health and vitality of plant life. Leveraging
-        advanced technology and artificial intelligence, LeafRakshak is designed
-        to identify and diagnose diseases affecting plant leaves, providing
-        timely insights for effective intervention and care.
+        SocialRakshak is an innovative project aimed at detecting deepfake
+        content, safeguarding the integrity of digital media. Leveraging
+        advanced technology and artificial intelligence, SocialRakshak is
+        designed to identify and flag deepfake videos, providing timely insights
+        for authentication and prevention.
       </p>
 
       <div className="flex flex-wrap items-center mt-12 justify-evenly">
@@ -102,10 +102,11 @@ const AboutUs = () => {
                 isDarkMode ? "text-gray-300" : "text-gray-400"
               )}
             >
-              LeafRakshak strives to transform plant care through AI-powered
-              disease detection. Our goal is to empower individuals, gardeners,
-              and farmers with the tools and knowledge to preserve plant health,
-              fostering a greener and more sustainable world.
+              SocialRakshak endeavors to revolutionize the detection of deepfake
+              content through cutting-edge AI technology. Our objective is to
+              equip individuals, content creators, and platforms with the means
+              to authenticate media, ensuring digital integrity and fostering
+              trust in online interactions.
             </p>
           </div>
         </div>
@@ -121,10 +122,12 @@ const AboutUs = () => {
                 isDarkMode ? "text-gray-300" : "text-gray-400"
               )}
             >
-              LeafRakshak revolutionizes plant care through AI-driven disease
-              detection, personalized treatment advice, real-time monitoring,
-              educational resources, and a supportive community. Cultivate
-              healthier plants effortlessly with our comprehensive services.
+              SocialRakshak revolutionizes the landscape of online content
+              integrity through AI-driven deepfake detection, personalized
+              verification guidance, real-time monitoring, educational
+              resources, and a supportive network. Safeguard digital
+              authenticity effortlessly with our comprehensive suite of
+              services.
             </p>
           </div>
         </div>
@@ -140,10 +143,10 @@ const AboutUs = () => {
                 isDarkMode ? "text-gray-300" : "text-gray-400"
               )}
             >
-              Our mission is to make disease detection easy and empowering. We provide
-              accurate diagnoses, personalized recommendations, and a supportive
-              community. Join us in cultivating healthier, greener spaces for a
-              sustainable world."
+              Our mission is to simplify and empower the process of deepfake
+              detection. We offer precise identifications, personalized
+              solutions, and a supportive network. Join us in fostering digital
+              integrity for a safer and more trustworthy online environment.
             </p>
           </div>
         </div>
